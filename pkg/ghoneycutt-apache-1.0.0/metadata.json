@@ -30,7 +30,7 @@
     "manifests/php.pp": "5018f8d5f632b18b09c95f916d3a95b3",
     "files/private_keys/apachehup": "70adb76e0c8431b3c2e98cae756167bd",
     "files/public_keys/apachehup": "24b730aa4b1244f51df30bc850a2a05d",
-    "README": "183e7a15a07b6ee5f6d76619e1a02a21",
+    "README": "72026cfedfa4f252054c0ca1f6e7a1ff",
     "files/favicon.ico": "39f06169979733a6efee9068927eccee",
     "manifests/ssl.pp": "a13ee7f1aaf745e32587ec0f609d845c",
     "tests/init.pp": "4eac4a7ef68499854c54a78879e25535",
