@@ -1,0 +1,8 @@
+name    'ghoneycutt-apache'
+version '1.0.0'
+
+## Add dependencies, if any:
+dependency 'ghoneycutt/ssh', '>= 1.0.0'
+dependency 'ghoneycutt/pam', '>= 1.0.0'
+dependency 'ghoneycutt/generic', '>= 1.0.0'
+dependency 'ghoneycutt/sudo', '>= 1.0.0'
