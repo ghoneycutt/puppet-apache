@@ -1,3 +1,11 @@
 apache
 
-This is the apache module.
+Manages apache servers, remote restarts, and mod_ssl, mod_php, mod_python, mod_perl
+
+You can also easily setup a web server by only specifying the apache config file, such as
+
+apache::vhost { "mediawiki":
+    source => "puppet:///modules/mediawiki/mediawiki.conf",
+}
+
+Released 20100625 - Garrett Honeycutt - GPLv2
