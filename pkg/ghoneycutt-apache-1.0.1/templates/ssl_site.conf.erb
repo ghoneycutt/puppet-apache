@@ -1,0 +1,79 @@
+# This file is being maintained by Puppet.
+# DO NOT EDIT
+
+# turning this off 20100223 as it conflicts with ssl.conf and probably
+# a messed up rt/wiki installation..
+#Listen <%= ip %>:<%= port %>
+NameVirtualHost <%= ip %>:<%= port %>
+
+<VirtualHost <%= ip %>:<%= port %>>
+    Servername _default_
+
+#    AddType application/x-x509-ca-cert .crt
+#    AddType application/x-pkcs7-crl    .crl
+
+    ##   SSL Engine Switch:
+    ##   Enable/Disable SSL for this virtual host.
+    SSLEngine on
+
+    ##   SSL Protocol support:
+    ## List the enable protocol levels with which clients will be able to
+    ## connect.  Disable SSLv2 access by default:
+    SSLProtocol all -SSLv2
+
+    ##   SSL Cipher Suite:
+    ## List the ciphers that the client is permitted to negotiate.
+    ## See the mod_ssl documentation for a complete list.
+    SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+
+    ##   Server Certificate:
+    ## Point SSLCertificateFile at a PEM encoded certificate.  If
+    ## the certificate is encrypted, then you will be prompted for a
+    ## pass phrase.  Note that a kill -HUP will prompt again.  A new
+    ## certificate can be generated using the genkey(1) command.
+    SSLCertificateFile <%= certfile %>
+
+    ##   Server Private Key:
+    ##   If the key is not combined with the certificate, use this
+    ##   directive to point at the key file.  Keep in mind that if
+    ##   you've both a RSA and a DSA private key you can configure
+    ##   both in parallel (to also allow the use of DSA ciphers, etc.)
+    SSLCertificateKeyFile <%= certkey %>
+
+    ##   Server Certificate Chain:
+    ##   Point SSLCertificateChainFile at a file containing the
+    ##   concatenation of PEM encoded CA certificates which form the
+    ##   certificate chain for the server certificate. Alternatively
+    ##   the referenced file can be the same as SSLCertificateFile
+    ##   when the CA certificates are directly appended to the server
+    ##   certificate for convinience.
+    ##
+    ##   Certificate Authority (CA):
+    ##   Set the CA certificate verification path where to find CA
+    ##   certificates for client authentication or alternatively one
+    ##   huge file containing all of them (file must be PEM encoded)V
+    <% if cachain != :undef %>SSLCertificateChainFile <%= cachain %><% end %>
+    <% if cafile != :undef %>SSLCACertificateFile <%= cafile %><% end %>
+    <% if revokefile != :undef %>SSLCARevocationFile <%= revokefile %><% end %>
+
+    ServerAdmin <%= contactEmail %>
+
+    DocumentRoot /var/www/html
+
+    ##   Client Authentication (Type):
+    ##   Client certificate verification type and depth.  Types are
+    ##   none, optional, require and optional_no_ca.  Depth is a
+    ##   number which specifies how deeply to verify the certificate
+    ##   issuer chain before deciding the certificate is not valid.
+    SSLVerifyDepth  10
+
+    BrowserMatch ".*MSIE.*" \
+        nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+
+    ##   Per-Server Logging:
+    ##   The home of a custom SSL log file. Use this when you want a
+    ##   compact non-error SSL logfile on a virtual host basis.
+    CustomLog /var/log/httpd/ssl_request.log \
+        "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
+</VirtualHost>
