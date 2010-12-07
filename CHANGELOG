@@ -1,2 +1,8 @@
-1.0.0 - initial release
-1.0.1 - added documentation
+1.0.0 - 20100625
+  * initial release
+
+1.0.1 - 20100811
+  * added documentation
+
+1.0.2 - 20101207
+  * added LICENSE and CHANGELOG files

@@ -1,5 +1,5 @@
 name    'ghoneycutt-apache'
-version '1.0.1'
+version '1.0.2'
 
 ## Add dependencies, if any:
 dependency 'ghoneycutt/ssh', '>= 1.0.0'

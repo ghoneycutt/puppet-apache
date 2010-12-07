@@ -1,7 +1,5 @@
 apache
 
-Released 20100625 - Garrett Honeycutt - GPLv2
-
 Manages apache servers, remote restarts, and mod_ssl, mod_php, mod_python, mod_perl
 
 You can also easily setup a web server by only specifying the apache config file, such as
